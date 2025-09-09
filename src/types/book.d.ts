@@ -7,7 +7,7 @@ interface User {
 interface Book {
     _id: string;
     title: string;
-    author: string
+    author: string;
     description: string
     genre: string
     year: number
