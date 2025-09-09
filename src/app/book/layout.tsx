@@ -19,9 +19,9 @@ function layout({
   return (
     <Container className="mt-6">
       <Box className="border-[0.5px] border-slate-800 rounded p-2 w-auto">
-        <Button variant="contained" component="a" href="/" >
-            <FontAwesomeIcon icon={faHouse} />
-            <div>Home</div>
+        <Button variant="outlined" component="a" href="/" className="flex items-center gap-2 h-12">
+            <FontAwesomeIcon icon={faHouse} className="w-5 h-5"/>
+            <div className="text-lg mt-1">Home</div> 
         </Button>
       </Box>
       <Box className="mt-8">{children}</Box>

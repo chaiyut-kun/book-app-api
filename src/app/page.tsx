@@ -29,7 +29,7 @@ export default function Home() {
   return (
     <Container>
       <Box className="mt-8 flex gap-2 items-center justify-center">
-        <Link href={"https://github.com/tanapattara-classroom/classroom-api"}>
+        <Link href={"https://github.com/tanapattara-classroom/classroom-api"} target="_blank" className="text-gray-50 text-xl underline">
           To classroom-api repository
         </Link>
         <Button onClick={handleBooksData}>Click to get books</Button>
