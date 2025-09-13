@@ -44,20 +44,22 @@ function layout({
         </Button>
       </Box>
 
-      <Grid spacing={6} className="mb-4 overflow-wrap">
+      <Grid container spacing={1.8} columnGap={6.6} className="mt-1 overflow-wrap">
+        {/* <Box className="border-[0.5px] border-slate-800 p-2 rounded w-auto" key={book._id}> */}
         {booksTitle && booksTitle.map((book) => {
           return (
-            <Box className="border-[0.5px] border-slate-800 rounded w-auto" key={book._id}>
-              <Button variant="outlined" component="a" href={`/books/${book._id}`} className="h-12 w-[14rem]">
+            <Grid size={2} key={book._id}>
+              <Button variant="outlined" component="a" href={`/book/${book._id}`} className="h-12 w-[14rem]">
                 <FontAwesomeIcon icon={faBook} className="w-5 h-5"/>
                 <div className="text-xs mt-1">{book.title}</div> 
               </Button>
-            </Box>
+            </Grid>
           )
         })}
+        {/* </Box> */}
       </Grid>
       
-      <Box className="mt-8">{children}</Box>
+      <Box className="mt-4">{children}</Box>
     </Container>
   );
 }
