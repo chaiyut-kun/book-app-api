@@ -2,8 +2,8 @@ interface BookCardProps {
     id: string; 
     title: string;
     author: string;
-    description: string;
-    price: number;
+    description?: string;
+    price?: number;
     year?: number;
     available?: boolean;
     genre?: string;
