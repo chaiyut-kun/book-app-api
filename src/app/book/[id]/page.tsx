@@ -20,8 +20,8 @@ import {
 import { getBook } from "@/module/GetBook";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faUser } from "@fortawesome/free-solid-svg-icons";
-import GitHubIcon from '@mui/icons-material/GitHub';
 import { ImgLink } from "@/module/ImgLink";
+import { AvatarProfile, GithubDescription } from "@/app/component/ProfileComp";
 
 export default function Page() {
   const { id } = useParams();
@@ -146,23 +146,9 @@ export function BasicCard({
         >
           {/* github link https://github.com/chaiyut-kun*/}
           <Container>
-            <Avatar
-              alt="Chaiyut github"
-              src="https://avatars.githubusercontent.com/u/135094423?v=4"
-              sx={{ width: 200, height: 200, mx: "auto", mt: 4 }}
-            ></Avatar>
+            <AvatarProfile />
 
-            <Box className="text-center mt-1">
-            <Button component="a" href="https://github.com/chaiyut-kun">
-              <Typography
-                variant="h6"
-                className="mt-2 text-gray-200"
-                >
-                <GitHubIcon fontSize="medium" className="me-1 mb-1"/>
-                Chaiyut-Kun
-              </Typography>
-            </Button>
-            </Box>
+            <GithubDescription />
             <Typography
                 className="text-center mt-2 text-gray-400"
                 sx={{ fontSize: 12 }}

@@ -36,14 +36,8 @@ function layout({
   }, []);
   
   return (
-    <Container className="mt-6 flex-col items-center gap-4" sx={{  }}>
-      <Box className="border-[0.5px] border-slate-800 rounded p-2 w-auto">
-        <Button variant="outlined" component="a" href="/" className="flex items-center gap-2 h-12">
-            <FontAwesomeIcon icon={faHouse} className="w-5 h-5"/>
-            <div className="text-lg mt-1">Home</div> 
-        </Button>
-      </Box>
 
+    <Container className="mt-6 flex-col items-center gap-4" sx={{}}>
       <Grid container spacing={1.8} columnGap={6.6} className="mt-1 overflow-wrap">
         {/* <Box className="border-[0.5px] border-slate-800 p-2 rounded w-auto" key={book._id}> */}
         {booksTitle && booksTitle.map((book) => {
