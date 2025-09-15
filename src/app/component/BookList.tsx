@@ -6,7 +6,6 @@ import IconButton from '@mui/material/IconButton';
 import InfoIcon from '@mui/icons-material/Info';
 import { ImgLink } from '@/module/ImgLink';
 import Link from 'next/link';
-import { Button } from '@mui/material';
 
 export default function BookList({id, title, author}: BookCardProps) {
 

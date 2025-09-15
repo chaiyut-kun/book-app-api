@@ -31,7 +31,7 @@ Or [http://localhost:3001](http://localhost:3001) if port 3000 is used by API (f
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 # Example ตัวอย่างการใช้งาน
-[![How to using](/public/example.gif)](/public/example.gif)
+[h![How to using](/public/example.gif)](/public/example.gif)
 
 # Developer 
 Chaiyut Tavon : 663450037-1
