@@ -1,6 +1,6 @@
 "use client"
 
-import AuthService, { ValidateEmail, ValidatePassword } from '@/lib/AuthService'
+import AuthService from '@/lib/AuthService'
 import { RegisterForm } from '@/types/RegisterForm'
 import { Container, Button, Typography, Card, CardContent, Input } from '@mui/material'
 import { useState } from 'react'
@@ -15,7 +15,6 @@ function Register() {
     
     const [registerForm, setRegisterForm] = useState(userData)
 
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target
         setRegisterForm({
@@ -25,12 +24,12 @@ function Register() {
     }
 
     const handleRegister = () => {
-        if (!ValidateEmail(registerForm.email)) {
+        if (!AuthService.ValidateEmail(registerForm.email)) {
             alert('Invalid email format')
             return
         }
 
-        if (!ValidatePassword(registerForm.password, registerForm.confirmPassword || '')) {
+        if (!AuthService.ValidatePassword(registerForm.password, registerForm.confirmPassword || '')) {
             alert('Passwords do not match')
             return
         }

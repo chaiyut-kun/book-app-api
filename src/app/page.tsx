@@ -7,21 +7,25 @@ import {
   Container,
   Card,
 } from "@mui/material";
-import LoadingScreen from './component/LoadingScreen'
-import { BookResponse, Book } from "@/types/book";
+import { Book } from "@/types/book";
 import { getBooks } from "@/module/GetBook";
 import BookList from "./component/BookList";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ListSubheader from "@mui/material/ListSubheader";
-import { useRouter } from 'next/navigation'
 
 import { ProfileChip, AvatarProfile, GithubDescription } from "./component/ProfileComp";
 
 export default function Home() {
 
-  // useRouter for redirect (handle in client side)
-  const router = useRouter()
+  // if isLoggedIn
+  try {
+    if (localStorage.getItem('token') === null) {
+      window.location.href = '/login'
+    }
+  } catch (error) {
+    console.log(error)
+  }
   
   const [booksData, setBooksData] = useState<Book[]>([]);
 
