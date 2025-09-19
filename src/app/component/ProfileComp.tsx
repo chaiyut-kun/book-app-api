@@ -4,13 +4,16 @@ import { faMedium } from "@fortawesome/free-brands-svg-icons";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 export function ProfileChip() {
+
+  
+  
   return (
     <>
-      <Box className="flex items-center justify-center mt-2 gap-1">
+      <Box className="flex items-center justify-center mt-2 gap-1 ">
         <Chip
           label={
-            <Box>
-              <FontAwesomeIcon icon={faMedium} />
+            <Box className="flex items-center">
+              <FontAwesomeIcon icon={faMedium}/>
               Medium
             </Box>
           }
