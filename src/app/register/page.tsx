@@ -38,8 +38,7 @@ function Register() {
 
         AuthService.Register(registerForm as RegisterForm).then(async res => {
             if (res.status === 201) {
-                localStorage.setItem('token', res.data.token)
-                window.location.href = '/'
+                window.location.href = '/login'
             }
         })
     }
