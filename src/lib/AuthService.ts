@@ -6,6 +6,7 @@ import axios from "axios";
 export default class AuthService {
   private static API_PATH = "http://localhost:3000/api"
   static Register(data: RegisterForm) {
+    console.log(this.API_PATH)
     // send data to api
     const response = axios.post(
       `${AuthService.API_PATH}/auth/register`,

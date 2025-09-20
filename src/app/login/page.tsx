@@ -1,14 +1,14 @@
 "use client"
 
 import React, { useState } from 'react'
-import { Card, Typography, Box, Container, Button } from '@mui/material'
+import { Card, Typography, Box, Container, Button, Divider } from '@mui/material'
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Link from 'next/link';
+import Link from '@mui/material/Link';
 import AuthService from '@/lib/AuthService';
 
 export default function Login() {
@@ -30,6 +30,10 @@ export default function Login() {
         }
     }
 
+    const toRegister = () => {
+        window.location.href = '/register'
+    }
+
     const onTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = e.target
         setUserData({
@@ -45,7 +49,8 @@ export default function Login() {
             <Container>
                 <Card sx={{ maxWidth: 400, mx: 'auto', py: 2, px: 6 }}>
                     <Box>
-                        <Typography variant='h5' align='center'>Login</Typography>
+                        <Typography variant='h5' >Login</Typography>
+                        <Typography variant='caption' >Don't have an account? <Link href="/register" underline="always">Create new</Link></Typography>
                     </Box>
                     <Box>
                         <InputWithIcon name='email' value={userData.email} handleChange={onTextChange} label="Email" type="text" />
@@ -53,7 +58,7 @@ export default function Login() {
                     </Box>
                     <Box sx={{ position: 'relative', mb: 2 }}>
                         <Box sx={{ position: 'absolute', right: 0 }}>
-                            <Link href={"#"}>
+                            <Link href={"#"} >
                                 <Typography fontSize={12}>
                                     Forgot password?
                                 </Typography>
@@ -62,6 +67,9 @@ export default function Login() {
                         </Box>
                     </Box>
                     <Button variant="contained" sx={{ my: 2 }} onClick={handlerUserData} fullWidth>Login</Button>
+                    <Divider sx={{ opacity: 0.7 }}>or</Divider>
+                    <Button variant="contained" sx={{ my: 2 }} onClick={toRegister} fullWidth>Register</Button>
+
                 </Card>
             </Container>
         </>
@@ -69,11 +77,11 @@ export default function Login() {
 }
 
 interface InputWithIconProps {
-  label: string;
-  type: string;
-  handleChange: React.ChangeEventHandler<HTMLInputElement>;
-  name: string
-  value: string
+    label: string;
+    type: string;
+    handleChange: React.ChangeEventHandler<HTMLInputElement>;
+    name: string
+    value: string
 }
 
 export function InputWithIcon({ label, type, handleChange, name, value }: InputWithIconProps) {

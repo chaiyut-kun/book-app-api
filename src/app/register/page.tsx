@@ -11,7 +11,7 @@ function Register() {
         email: '',
         password: '',
         confirmPassword: ''
-    } as RegisterForm
+    } 
     
     const [registerForm, setRegisterForm] = useState(userData)
 
@@ -20,7 +20,7 @@ function Register() {
         setRegisterForm({
             ...registerForm,
             [name]: value
-        } as RegisterForm)
+        })
     }
 
     const handleRegister = () => {
@@ -33,12 +33,13 @@ function Register() {
             alert('Passwords do not match')
             return
         }
-        
 
-        AuthService.Register(registerForm).then(async (res) => {
+        // console.log(registerForm)
+
+        AuthService.Register(registerForm as RegisterForm).then(async res => {
             if (res.status === 201) {
-                console.log(res)
-                return res
+                localStorage.setItem('token', res.data.token)
+                window.location.href = '/'
             }
         })
     }
