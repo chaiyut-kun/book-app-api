@@ -15,25 +15,24 @@ import ImageListItem from "@mui/material/ImageListItem";
 import ListSubheader from "@mui/material/ListSubheader";
 
 import { ProfileChip, AvatarProfile, GithubDescription } from "./component/ProfileComp";
+import AuthService from "@/lib/AuthService";
 
 export default function Home() {
 
   // if isLoggedIn
-  try {
-    if (localStorage.getItem('token') === null) {
-      window.location.href = '/login'
-    }
-  } catch (error) {
-    console.log(error)
-  }
+
+  
+  
   
   const [booksData, setBooksData] = useState<Book[]>([]);
 
+  const handleBooksData = async () => {
+    const data: Book[] = (await getBooks()) ?? [];
+    setBooksData(data);
+  };
+
   useEffect(() => {
-    const handleBooksData = async () => {
-      const data: Book[] = (await getBooks()) ?? [];
-      setBooksData(data);
-    };
+    AuthService.CheckToken();
     handleBooksData();
 
 
