@@ -31,5 +31,20 @@ export default class AuthService {
     return re.test(email);
   }
 
+  static CheckToken() {
+    try {
+      if (localStorage.getItem('token') === null) {
+        window.location.href = '/login'
+      } 
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  static LogOut() {
+    localStorage.removeItem('token')
+    window.location.href = '/login'
+  }
+  
 }
 
