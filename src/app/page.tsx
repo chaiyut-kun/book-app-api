@@ -16,14 +16,15 @@ import ListSubheader from "@mui/material/ListSubheader";
 
 import { ProfileChip, AvatarProfile, GithubDescription } from "./component/ProfileComp";
 import AuthService from "@/lib/AuthService";
+import { useAuth } from "@/contexts/AppContext";
+import { AddBookModal } from "./component/ActionModal";
 
 export default function Home() {
 
   // if isLoggedIn
 
-  
-  
-  
+  const { user } = useAuth();
+
   const [booksData, setBooksData] = useState<Book[]>([]);
 
   const handleBooksData = async () => {
@@ -37,6 +38,7 @@ export default function Home() {
 
 
   }, []);
+
 
   return (
     <>
@@ -52,6 +54,7 @@ export default function Home() {
                 {booksData.length}
               </Typography>
               in our store
+              {user && <AddBookModal onAddSuccess={() => handleBooksData?.()} />}    
             </ListSubheader>
 
             {/* github profile */}
@@ -73,6 +76,7 @@ export default function Home() {
                   id={book._id}
                   title={book.title}
                   author={book.author}
+                  onDeleteSuccess={handleBooksData}
                 ></BookList>
               );
             })}

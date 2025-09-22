@@ -37,7 +37,7 @@ function layout({
   
   return (
 
-    <Container className="mt-6 flex-col items-center gap-4" sx={{}}>
+    <Container className="mt-2 flex-col items-center gap-4" sx={{}}>
       <Grid container spacing={1.8} columnGap={6.6} className="mt-1 overflow-wrap">
         {/* <Box className="border-[0.5px] border-slate-800 p-2 rounded w-auto" key={book._id}> */}
         {booksTitle && booksTitle.map((book) => {

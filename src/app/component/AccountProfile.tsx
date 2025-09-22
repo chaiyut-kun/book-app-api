@@ -7,11 +7,12 @@ import { LogOutButton } from "./ActionButton";
 export function AccountProfile() {
 
     const { user } = useAuth();
-    
+
     return (
         <>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                { user ? (<LogOutButton/>): <></>}
+
+                {user ? (<LogOutButton />) : <></>}
                 <AccountCircleIcon fontSize="small" />
                 <Typography variant="body2">{user?.username} | {user?.email}</Typography>
             </Box>

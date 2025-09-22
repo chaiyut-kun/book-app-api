@@ -18,6 +18,16 @@ interface Book {
     updatedAt: string; // ISO date string
 }
 
+interface BookCreate {
+    title: string;
+    author: string;
+    description: string
+    genre: string
+    year: number
+    price: number
+    available: boolean;
+}
+
 interface Pagination {
   page: number;
   limit: number;
@@ -32,4 +42,4 @@ interface BookResponse {
 }
 
 
-export type { User, Book, Pagination, BookResponse };
+export type { User, Book, Pagination, BookResponse, BookCreate };

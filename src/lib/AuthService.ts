@@ -4,7 +4,7 @@ import { LoginForm, RegisterForm } from "@/types/RegisterForm";
 import axios from "axios";
 
 export default class AuthService {
-  private static API_PATH = "http://localhost:3000/api"
+  public static API_PATH = "http://localhost:3000/api"
   static Register(data: RegisterForm) {
     console.log(this.API_PATH)
     // send data to api
