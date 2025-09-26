@@ -10,9 +10,11 @@ import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Link from '@mui/material/Link';
 import AuthService from '@/lib/AuthService';
+import { useRouter } from 'next/navigation'
 
 export default function Login() {
 
+    const router = useRouter()
     const [userData, setUserData] = useState({
         email: '',
         password: ''
@@ -25,14 +27,14 @@ export default function Login() {
             if (res.status === 200) {
                 localStorage.setItem('token', res.data.token)
             }
-            window.location.href = '/'
+            router.push('/')
         } catch (error) {
             console.log(error)
         }
     }
 
     const toRegister = () => {
-        window.location.href = '/register'
+        router.push('/register')
     }
 
     const onTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -51,7 +53,7 @@ export default function Login() {
                 <Card sx={{ maxWidth: 400, mx: 'auto', py: 2, px: 6 }}>
                     <Box>
                         <Typography variant='h5' >Login</Typography>
-                        <Typography variant='caption' >Don't have an account? <Link href="/register" underline="always">Create new</Link></Typography>
+                        <Typography variant='caption' >Don't have an account? <Link href={"/register"} underline="always">Create new</Link></Typography>
                     </Box>
                     <Box>
                         <InputWithIcon name='email' value={userData.email} handleChange={onTextChange} label="Email" type="text" />
@@ -105,24 +107,6 @@ export function InputWithIcon({ label, type, handleChange, name, value }: InputW
                     }
                 />
             </FormControl>
-            {/* <TextField
-        id="input-with-icon-textfield"
-        label="TextField"
-        slotProps={{
-          input: {
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
-          },
-        }}
-        variant="standard"
-      /> */}
-            {/* <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-        <TextField id="input-with-sx" label="With sx" variant="standard" type={type}/>
-      </Box> */}
         </Box>
     );
 }

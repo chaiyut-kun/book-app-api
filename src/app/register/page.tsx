@@ -3,6 +3,7 @@
 import AuthService from '@/lib/AuthService'
 import { RegisterForm } from '@/types/RegisterForm'
 import { Container, Button, Typography, Card, CardContent, Input } from '@mui/material'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 
 function Register() {
@@ -12,6 +13,8 @@ function Register() {
         password: '',
         confirmPassword: ''
     } 
+
+    const router = useRouter()
     
     const [registerForm, setRegisterForm] = useState(userData)
 
@@ -38,7 +41,7 @@ function Register() {
 
         AuthService.Register(registerForm as RegisterForm).then(async res => {
             if (res.status === 201) {
-                window.location.href = '/login'
+                router.push('/login')
             }
         })
     }
