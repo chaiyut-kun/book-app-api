@@ -1,4 +1,5 @@
 interface BookCardProps {
+    setBook: Book;
     id: string; 
     title: string;
     author: string;

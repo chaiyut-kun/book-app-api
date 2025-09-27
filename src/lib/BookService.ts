@@ -1,4 +1,4 @@
-import { BookCreate } from "@/types/book";
+import { BookCreate, BookUpdate } from "@/types/book";
 import axios from "axios";
 
 export class BookService {
@@ -20,6 +20,22 @@ export class BookService {
             }
         })
         return response;
+    }
+    
+    static async UpdateBook(id: string, book: BookUpdate) {
+        try{
+            const response = await axios.put(`${this.API_PATH}/books/${id}`, book, {
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            if (response.status === 200) {
+                return response;
+            }
+        }catch(error : any){
+            // console.log("Error",error.response) 
+            return error.response;
+        }
     }
     
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Typography, Box } from "@mui/material";
 import { useAuth } from "@/contexts/AppContext";
@@ -7,6 +7,10 @@ import { LogOutButton } from "./ActionButton";
 export function AccountProfile() {
 
     const { user } = useAuth();
+
+    useEffect(() => {
+        console.log(user)
+    }, [user])
 
     return (
         <>

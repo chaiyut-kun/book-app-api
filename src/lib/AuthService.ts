@@ -17,8 +17,9 @@ export default class AuthService {
     return response;
   }
 
-  static Login(data: LoginForm) {
-    const response = axios.post(`${AuthService.API_PATH}/auth/login`, data)
+  static async Login(data: LoginForm) {
+    const response = await axios.post(`${AuthService.API_PATH}/auth/login`, data)
+    localStorage.setItem('token',response.data.token)
     return response;
   }
 
@@ -33,11 +34,14 @@ export default class AuthService {
 
   static CheckToken() {
     try {
+      // in case token is not exists
       if (localStorage.getItem('token') === null) {
         window.location.href = '/login'
       } 
     } catch (error) {
       console.log(error)
+      // in case local storage is not set
+      window.location.href = '/login'
     }
   }
 

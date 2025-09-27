@@ -24,7 +24,6 @@ export default function Home() {
   // if isLoggedIn
 
   const { user } = useAuth();
-
   const [booksData, setBooksData] = useState<Book[]>([]);
 
   const handleBooksData = async () => {

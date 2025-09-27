@@ -6,7 +6,6 @@ import { User } from '@/types/book';
 interface AuthContextType {
     user: User | null;
     isLoading: boolean;
-    login: (credentials: any) => Promise<{ success: boolean; error?: string }>;
     logout: () => void;
     updateUser: (userData: User) => void;
 }
@@ -25,22 +24,27 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     const checkAuth = async () => {
       try {
         const token = localStorage.getItem('token');
-        if (token) {
+        if (token !== null) {
           // เรียก API เพื่อดึงข้อมูล user
-          const response = await axios.get('http://localhost:3000/api/auth/profile', {
+          const response = await axios.get(`${AuthService.API_PATH}/auth/profile`, {
             headers: {
               'Authorization': `Bearer ${token}`
             }
-          });
+          })
           
           if (response.status === 200) {
             const userData = await response.data;
             setUser(userData.user);
           } else {
+            console.log('Token is invalid')
             // Token หมดอายุหรือไม่ถูกต้อง
             localStorage.removeItem('token');
           }
+        } else {
+          console.log('No token found')
         }
+
+        
       } catch (error) {
         console.error('Auth check failed:', error);
         localStorage.removeItem('token');
@@ -49,27 +53,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
       }
     };
   
-    const login = async (credentials: any) => {
-      try {
-        const response = await AuthService.Login(credentials);
-        
-        if (response.status === 200) {
-          const { token, user: userData } = response.data;
-          localStorage.setItem('token', token);
-          setUser(userData.user);
-          
-          return { success: true };
-        }
-        
-        return { success: false, error: 'Invalid credentials' };
-      } catch (error: any) {
-        console.error('Login failed:', error);
-        return { 
-          success: false, 
-          error: error.response?.data?.message || 'Login failed' 
-        };
-      }
-    };
+    
   
     const logout = () => {
       localStorage.removeItem('token');
@@ -83,7 +67,6 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     const value = {
       user,
       isLoading,
-      login,
       logout,
       updateUser,
     };

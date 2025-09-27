@@ -9,8 +9,9 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import Link from '@mui/material/Link';
-import AuthService from '@/lib/AuthService';
 import { useRouter } from 'next/navigation'
+import { useAuth } from '@/contexts/AppContext';
+import AuthService from '@/lib/AuthService';
 
 export default function Login() {
 
@@ -19,15 +20,16 @@ export default function Login() {
         email: '',
         password: ''
     })
+
+    const { login } = useAuth()
     
 
     const handlerUserData = async () => {
         try {
             const res = await AuthService.Login(userData)
             if (res.status === 200) {
-                localStorage.setItem('token', res.data.token)
+                router.push('/')
             }
-            router.push('/')
         } catch (error) {
             console.log(error)
         }

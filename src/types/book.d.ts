@@ -28,6 +28,14 @@ interface BookCreate {
     available: boolean;
 }
 
+interface BookUpdate {
+    title?: string;
+    author?: string;
+    description?: string
+    year?: number
+    price?: number
+}
+
 interface Pagination {
   page: number;
   limit: number;
@@ -42,4 +50,4 @@ interface BookResponse {
 }
 
 
-export type { User, Book, Pagination, BookResponse, BookCreate };
+export type { User, Book, Pagination, BookResponse, BookCreate, BookUpdate };
